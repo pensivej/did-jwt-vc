@@ -26,7 +26,7 @@ module.exports = {
                 presets: [ // plugin 설정들의 모음
                     ['@babel/preset-env', {
                         targets: { // 예전 브라우저 지원
-                            browsers: ['> 1% in KR'],
+                            browsers: ['> 0.25% in KR', 'not dead'],
                             ios: "13"
                         }, // 한국에서 1% 이상 점유율 가진 브라우저
                         // debug: true, // 개발용
