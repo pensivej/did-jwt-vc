@@ -3,8 +3,8 @@ const webpack = require('webpack');
 
 module.exports = {
     mode: 'production',
-    devtool: 'eval', // 빠르게
-    resolve: { // entry app의 변환할 파일명
+    devtool: 'eval',
+    resolve: {
         extensions: ['.jsx', '.js'],
         fallback: {
             "util": false,
@@ -13,23 +13,22 @@ module.exports = {
             "crypto": require.resolve('crypto-browserify')
         }
     },
-    entry: { // 코드의 시작지점 (입력)
-        app: './lib/index.js' // 여러개면 배열로 넣으면 됨
+    entry: {
+        app: './lib/index.js'
     },
-    module: { // 웹팩이 사용할 플러그인 지정
-        rules: [{ // 여러개의 규칙들 (배열)
-            test: /\.jsx?/, // 규칙 적용할 대상 확장자 (정규 표현식)
-            // jsx? => js, jsx
-            exclude: /node_modules/, // 제외
+    module: {
+        rules: [{
+            test: /\.jsx?/,
+            exclude: /node_modules/,
             loader: 'babel-loader',
             options: {
-                presets: [ // plugin 설정들의 모음
+                presets: [
                     ['@babel/preset-env', {
-                        targets: { // 예전 브라우저 지원
+                        targets: {
                             browsers: ['> 0.25% in KR', 'not dead'],
                             ios: "13"
-                        }, // 한국에서 1% 이상 점유율 가진 브라우저
-                        // debug: true, // 개발용
+                        },
+                        debug: false, // for production
                         useBuiltIns: "entry",
                         corejs: 3
                     }]
@@ -45,9 +44,9 @@ module.exports = {
             process: 'process/browser'
         })
     ],
-    output: { // 컴파일한 코드를 내놓을 위치 (출력)
-        path: path.join(__dirname, 'dist'), // 파일위치할 디렉토리를 절대 경로로 지정
-        filename: 'did-jwt-vc.js', // 저장할 파일명 지정
+    output: {
+        path: path.join(__dirname, 'dist'),
+        filename: 'did-jwt-vc.js',
         library:
         {
             type: "global"
