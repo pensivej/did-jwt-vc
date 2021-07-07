@@ -1,3 +1,5 @@
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 import { createJWT, verifyJWT } from 'did-jwt'
 import { Resolvable } from 'did-resolver'
 import { JWT_ALG } from './constants'

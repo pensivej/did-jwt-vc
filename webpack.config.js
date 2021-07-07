@@ -19,24 +19,27 @@ module.exports = {
     module: { // 웹팩이 사용할 플러그인 지정
         rules: [{ // 여러개의 규칙들 (배열)
             test: /\.jsx?/, // 규칙 적용할 대상 확장자 (정규 표현식)
-            				// jsx? => js, jsx
+            // jsx? => js, jsx
             exclude: /node_modules/, // 제외
             loader: 'babel-loader',
             options: {
                 presets: [ // plugin 설정들의 모음
                     ['@babel/preset-env', {
                         targets: { // 예전 브라우저 지원
-                            browsers: ['> 1% in KR'], 
+                            browsers: ['> 1% in KR'],
+                            ios: "13"
                         }, // 한국에서 1% 이상 점유율 가진 브라우저
-                        debug: true, // 개발용
-                    }], 
-                    '@babel/preset-react'],
+                        // debug: true, // 개발용
+                        useBuiltIns: "entry",
+                        corejs: 3
+                    }]
+                ],
                 plugins: [],
             },
         }],
     },
     plugins: [
-        new webpack.LoaderOptionsPlugin({debug:true}),
+        new webpack.LoaderOptionsPlugin({ debug: true }),
         new webpack.ProvidePlugin({
             Buffer: ['buffer', 'Buffer'],
             process: 'process/browser'
@@ -46,8 +49,8 @@ module.exports = {
         path: path.join(__dirname, 'dist'), // 파일위치할 디렉토리를 절대 경로로 지정
         filename: 'did-jwt-vc.js', // 저장할 파일명 지정
         library:
-            {
-                type: "global"
-            }
+        {
+            type: "global"
+        }
     },
 }
