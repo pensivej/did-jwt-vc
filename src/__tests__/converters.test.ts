@@ -427,33 +427,33 @@ describe('credential', () => {
 
     describe('other W3C fields', () => {
       it('uses evidence from vc', () => {
-        const result = normalizeCredential({ vc: { evidence: 'foo'} })
+        const result = normalizeCredential({ vc: { evidence: 'foo' } })
         expect(result).toMatchObject({ evidence: 'foo' })
       })
 
       it('uses evidence from vc, keeping originals', () => {
         const result = normalizeCredential({ vc: { evidence: 'foo' } }, false)
-        expect(result).toMatchObject({ evidence: 'foo', vc: { evidence: 'foo'} })
+        expect(result).toMatchObject({ evidence: 'foo', vc: { evidence: 'foo' } })
       })
 
       it('uses credentialStatus from vc', () => {
-        const result = normalizeCredential({ vc: { credentialStatus: 'foo'} })
+        const result = normalizeCredential({ vc: { credentialStatus: 'foo' } })
         expect(result).toMatchObject({ credentialStatus: 'foo' })
       })
 
       it('uses credentialStatus from vc, keeping originals', () => {
         const result = normalizeCredential({ vc: { credentialStatus: 'foo' } }, false)
-        expect(result).toMatchObject({ credentialStatus: 'foo', vc: { credentialStatus: 'foo'} })
+        expect(result).toMatchObject({ credentialStatus: 'foo', vc: { credentialStatus: 'foo' } })
       })
 
       it('uses termsOfUse from vc', () => {
-        const result = normalizeCredential({ vc: { termsOfUse: 'foo'} })
+        const result = normalizeCredential({ vc: { termsOfUse: 'foo' } })
         expect(result).toMatchObject({ termsOfUse: 'foo' })
       })
 
       it('uses termsOfUse from vc, keeping originals', () => {
         const result = normalizeCredential({ vc: { termsOfUse: 'foo' } }, false)
-        expect(result).toMatchObject({ termsOfUse: 'foo', vc: { termsOfUse: 'foo'} })
+        expect(result).toMatchObject({ termsOfUse: 'foo', vc: { termsOfUse: 'foo' } })
       })
     })
 
